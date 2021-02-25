@@ -8,7 +8,9 @@ namespace Task_1_2
     {
         public static void FindNthRootOfNumber()
         {
-        EntryPoint:
+            const string format = "{0,-32}{1}";
+            Console.Clear();
+
             Console.Write("Enter number for calculation (floating point number):\n=> ");
 
             //Ввод числа, корень которого будем искать
@@ -32,7 +34,7 @@ namespace Task_1_2
             //Проверка на возможность извлечения корня
             if (number < 0 && power % 2 == 0)
             {
-                Console.WriteLine($"{number} is less than zero, so power of root can't be even.");
+                Console.WriteLine($"{number} is less than zero, so power of root can't be even.\n=> ");
                 goto EnteringPowerOfRoot;
             }
 
@@ -59,29 +61,19 @@ namespace Task_1_2
             }
 
             //Блок вывода
-            Console.WriteLine($"\nNumber=> {number}");
-            Console.WriteLine($"Power of root=> {power}");
+            Console.WriteLine();
+            Console.WriteLine(format, "Number:", $"{number}");
+            Console.WriteLine(format, "Power of root:", $"{power}");
             //Расчет корня
             //Первый способ - итерационный метод Ньютона
             //Второй способ - Math.Pow
             double result = CustomFormulae.CalculateRootOfNumber(number, power, precision);
             double resultPow = Math.Pow(number, 1d / power);
             //Вывод финальной информации
-            Console.WriteLine($"Approximate Root: {result}");
-            Console.WriteLine($"Root calculated via Math.Pow=>{resultPow}");
-            Console.WriteLine($"Difference between results is {Math.Abs(result - resultPow)}");
+            Console.WriteLine(format, "Approximate Root:", $"{result}");
+            Console.WriteLine(format, "Root calculated via Math.Pow:", $"{resultPow}");
+            Console.WriteLine(format, "Difference between results:", $"{Math.Abs(result - resultPow)}");
 
-            //Вопрос пользователю об остановке программы или перезапуске
-            Console.WriteLine("To quit, enter \"q\"");
-            Console.WriteLine("To restart program, enter anything else.");
-            switch (Console.ReadLine())
-            {
-                case "q":
-                    return;
-                default:
-                    Console.Clear();
-                    goto EntryPoint;
-            }
         }
         private static double CalculateRootOfNumber(double number, uint power, double accuracy)
         {
@@ -91,7 +83,7 @@ namespace Task_1_2
                 double.IsNegativeInfinity(number) ||
                 double.IsPositiveInfinity(number))
             {
-                throw new ArgumentException("number and/or degree is invalid.");
+                throw new ArgumentException("number and/or degree is invalid.\n=> ");
             }
 
             if (accuracy < 0)
@@ -99,7 +91,7 @@ namespace Task_1_2
                 throw new ArgumentOutOfRangeException(nameof(accuracy));
             }
 
-            if (power == 1)
+            if (power == 1 || number == 0)
             {
                 return number;
             }
