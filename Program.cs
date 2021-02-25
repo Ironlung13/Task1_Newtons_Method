@@ -8,7 +8,7 @@ namespace Task1_Newton_s_Method
         {
         EntryPoint:
             Console.WriteLine("Welcome, User!");
-            Console.Write("Enter number in question (floating point number):\n=> ");
+            Console.Write("Enter number for calculation (floating point number):\n=> ");
 
             //Ввод число, корень которого будем искать
             double number;
