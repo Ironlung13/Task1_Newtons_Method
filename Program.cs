@@ -10,16 +10,14 @@ namespace Task1_Newton_s_Method
             Console.WriteLine("Welcome, User!");
             Console.Write("Enter number in question (floating point number):\n=> ");
 
-
+            //Ввод число, корень которого будем искать
             double number;
-            while (!double.TryParse(Console.ReadLine(), out number) ||
-                    number > double.MaxValue ||
-                    number < double.MinValue)
+            while (!double.TryParse(Console.ReadLine(), out number))
             {
                 Console.Write("Invalid input. Try again\n=> ");
             }
-
-
+            
+            //Ввод степень корня
             uint power;
             Console.Write("Enter power of root value(positive non-zero integer):\n=> ");
 
@@ -29,13 +27,15 @@ namespace Task1_Newton_s_Method
             {
                 Console.Write("Invalid input. Try again\n=> ");
             }
-
+            
+            //Проверка на возможность извлечения корня
             if (number < 0 && power % 2 == 0)
             {
                 Console.WriteLine($"{number} is less than zero, so power of root can't be even.");
                 goto EnteringPowerOfRoot;
             }
 
+            //Ввод точности вычесления корня
             double precision;
             Console.WriteLine("Enter precision value (the lower, the better).");
             Console.Write("For epsilon enter \"epsilon\"\n=> ");
@@ -57,12 +57,20 @@ namespace Task1_Newton_s_Method
                         break;
             }
 
+            //Блок вывода
             Console.WriteLine($"\nNumber=> {number}");
             Console.WriteLine($"Power of root=> {power}");
+            //Расчет корня
+            //Первый способ - итерационный метод Ньютона
+            //Второй способ - Math.Pow
             double result = CustomFormulae.FindNthRootOfNumber(number, power, precision);
+            double resultPow = Math.Pow(number, 1d / power);
+            //Вывод финальной информации
             Console.WriteLine($"Approximate Root: {result}");
-            Console.WriteLine($"Root calculated via Math.Pow=>{Math.Pow(number,1d / power)}");
+            Console.WriteLine($"Root calculated via Math.Pow=>{resultPow}");
+            Console.WriteLine($"Difference between results is {Math.Abs(result - resultPow)}");
 
+            //Вопрос пользователю об остановке программы или перезапуске
             Console.WriteLine("To quit, enter \"q\"");
             Console.WriteLine("To restart program, enter anything else.");
             switch(Console.ReadLine())
