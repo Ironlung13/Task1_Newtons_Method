@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Task1_Newton_s_Method
+namespace Task_1_2
 {
     public static class CustomFormulae
     {

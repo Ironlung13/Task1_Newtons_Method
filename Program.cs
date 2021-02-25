@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task1_Newton_s_Method
+namespace Task_1_2
 {
     class Program
     {
@@ -8,6 +8,8 @@ namespace Task1_Newton_s_Method
         {
             Console.WriteLine("Welcome, User!");
             CustomFormulae.FindNthRootOfNumber();
+            Console.WriteLine("Back in Main.");
+            Console.ReadLine();
         }
     }
 }
