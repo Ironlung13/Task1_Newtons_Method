@@ -10,14 +10,14 @@ namespace Task1_Newton_s_Method
             Console.WriteLine("Welcome, User!");
             Console.Write("Enter number for calculation (floating point number):\n=> ");
 
-            //Ввод число, корень которого будем искать
+            //Ввод числа, корень которого будем искать
             double number;
             while (!double.TryParse(Console.ReadLine(), out number))
             {
                 Console.Write("Invalid input. Try again\n=> ");
             }
             
-            //Ввод степень корня
+            //Ввод степени корня
             uint power;
             Console.Write("Enter power of root value(positive non-zero integer):\n=> ");
 
